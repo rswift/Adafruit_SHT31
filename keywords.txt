@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map for NewSoftSerial
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+sht31readings	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+readTemperature	KEYWORD2
+readHumidity	KEYWORD2
+readSensors	KEYWORD2
+readStatus	KEYWORD2
+reset	KEYWORD2
+heater	KEYWORD2
+crc8	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
