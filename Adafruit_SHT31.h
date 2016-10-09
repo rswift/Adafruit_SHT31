@@ -34,12 +34,18 @@
 #define SHT31_HEATEREN             0x306D
 #define SHT31_HEATERDIS            0x3066
 
+typedef struct sht31readings {
+  float temperature;
+  float humidity;
+};
+
 class Adafruit_SHT31 {
  public:
   Adafruit_SHT31();
   boolean begin(uint8_t i2caddr = SHT31_DEFAULT_ADDR);
   float readTemperature(void);
   float readHumidity(void);
+  sht31readings readSensors(void);
   uint16_t readStatus(void);
   void reset(void);
   void heater(boolean);
@@ -50,7 +56,7 @@ class Adafruit_SHT31 {
   void writeCommand(uint16_t cmd);
 
   uint8_t _i2caddr;
-  boolean readData(void);
+//  boolean readData(void);
   float humidity, temp;
 };
 
