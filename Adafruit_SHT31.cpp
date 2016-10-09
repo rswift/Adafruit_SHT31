@@ -65,13 +65,25 @@ float Adafruit_SHT31::readHumidity(void) {
   return humidity;
 }
 
+sht31readings Adafruit_SHT31::readSensors(void) {
+  sht31readings readings;
+  if (!readTempHum()) {
+    readings.temperature = NAN;
+    readings.humidity = NAN;
+  } else {
+    readings.temperature = temp;
+    readings.humidity = humidity;
+  }
+  return readings;
+}
 
 boolean Adafruit_SHT31::readTempHum(void) {
   uint8_t readbuffer[6];
 
   writeCommand(SHT31_MEAS_HIGHREP);
   
-  delay(500);
+//  delay(500);
+  delay(15+2); // SHT31 datasheet states high repeatability takes max 15ms, so the +2 gives >13% tolerance on the stated max...
   Wire.requestFrom(_i2caddr, (uint8_t)6);
   if (Wire.available() != 6) 
     return false;
